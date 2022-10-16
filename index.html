@@ -5,53 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🌞Ternovets Weather App</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/4185257907.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/4185257907.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Montserrat:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
   <body>
     <div class="general-container">
       <main class="main-container">
-        <header><a href="#" target="_blank">Open-source code</a> by Irena Ternovets</header>
+        <header>
+          <a href="#" target="_blank">Open-source code</a> by Irena Ternovets
+        </header>
         <div class="primary-info">
           <div class="primary-temperature" id="primary-temperature"></div>
           <div class="primary-weather-data">
             <div class="primary-city" id="primary-city"></div>
-            <div class="primary-time" id="primary-time">06:09 - Sunday, 6 Oct `19</div>
-            <img class="primary-weather-icon" id="primary-weather-icon" src="#" alt="weather icon">
+            <div class="primary-time" id="primary-time">
+              06:09 - Sunday, 6 Oct `19
+            </div>
+            <img
+              class="primary-weather-icon"
+              id="primary-weather-icon"
+              src="#"
+              alt="weather icon"
+            />
             <div class="primary-description" id="primary-description"></div>
           </div>
         </div>
       </main>
       <aside class="sidebar-container">
-        <div class="search-engine">
-            <form class="search-form" id="search-form">
-                <input type="search" placeholder="Another location" id="city-input">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-        </div>
-            <hr>
-            <div class="weather-details-container">
-            <h3 class="sidebar-header">Weather Details</h3>
-            <div class="details-container">
-                <ul class="weather-details-">
-                    <li>Cloudiness</li>
-                    <li>Humidity</li>
-                    <li>Wind</li>
-                </ul>
-                <ul class="weather-details-values">
-                    <li id="primary-cloudiness"></li>
-                    <li id="primary-humidity"></li>
-                    <li id="primary-wind-speed"></li>
-                </ul>
-            </div>
-            <hr>
-            <div class="weather-forecast-container" id="weather-forecast-container">
-                
-            </div>
+        <form class="search-form" id="search-form">
+          <input
+            type="search"
+            placeholder="Another location"
+            id="city-input"
+            class="search-input"
+          />
+          <button type="submit" class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+
+        <div class="weather-details-container">
+          <h3 class="sidebar-header">Weather Details</h3>
+          <div class="details-container">
+            <ul class="weather-details">
+              <li>Cloudiness</li>
+              <li>Humidity</li>
+              <li>Wind</li>
+            </ul>
+            <ul class="weather-details weather-details-values">
+              <li id="primary-cloudiness"></li>
+              <li id="primary-humidity"></li>
+              <li id="primary-wind-speed"></li>
+            </ul>
+          </div>
+
+          <div
+            class="weather-forecast-container"
+            id="weather-forecast-container"
+          ></div>
         </div>
       </aside>
     </div>
