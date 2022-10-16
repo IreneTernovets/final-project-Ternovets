@@ -10,25 +10,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
   <body>
     <div class="general-container">
       <main class="main-container">
         <header><a href="#" target="_blank">Open-source code</a> by Irena Ternovets</header>
         <div class="primary-info">
-          <div class="primary-temperature">08°</div>
+          <div class="primary-temperature" id="primary-temperature"></div>
           <div class="primary-weather-data">
-            <div class="primary-city">London</div>
-            <div class="primary-time">06:09 - Sunday, 6 Oct `19</div>
-            <img class="primary-weather-icon" src="#" alt="weather icon">
-            <div class="primary-description">Rainy</div>
+            <div class="primary-city" id="primary-city"></div>
+            <div class="primary-time" id="primary-time">06:09 - Sunday, 6 Oct `19</div>
+            <img class="primary-weather-icon" id="primary-weather-icon" src="#" alt="weather icon">
+            <div class="primary-description" id="primary-description"></div>
           </div>
         </div>
       </main>
       <aside class="sidebar-container">
         <div class="search-engine">
-            <form class="search-form">
-                <input type="search" placeholder="Another location">
+            <form class="search-form" id="search-form">
+                <input type="search" placeholder="Another location" id="city-input">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
@@ -42,9 +43,9 @@
                     <li>Wind</li>
                 </ul>
                 <ul class="weather-details-values">
-                    <li>86%</li>
-                    <li>62%</li>
-                    <li>8km/h</li>
+                    <li id="primary-cloudiness"></li>
+                    <li id="primary-humidity"></li>
+                    <li id="primary-wind-speed"></li>
                 </ul>
             </div>
             <hr>
@@ -60,5 +61,6 @@
         </div>
       </aside>
     </div>
+    <script src="/app.js"></script>
   </body>
 </html>

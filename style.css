@@ -4,6 +4,8 @@ body {
      
 }
 .general-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
    
 }
 .main-container {
@@ -21,6 +23,10 @@ body {
 .primary-weather-icon {
 }
 .primary-description {
+
+}
+.primary-description::first-letter {
+    text-transform: uppercase;
 }
 .sidebar-container {
 }
