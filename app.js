@@ -17,14 +17,55 @@ if (hours < 10) {
 return `${hours}:${minutes} - ${weekDay}, ${day} ${month} '${year}`;
 }
 
+function search(city) {
+    let apiKey = "6e6d2f7795d4a628640bafdb43dd9260";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayCurrent);
+}
+
 function handleSubmit(respond) {
 respond.preventDefault();
 let city = document.querySelector("#city-input");
-console.log(city);
+search(city.value);
+}
+
+function formatDate(timestamp) {
+let date = new Date(timestamp * 1000)
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+return days[day];
+}
+
+function displayForecast(respond) {
+let forecast = respond.data.daily;
+let forecastElement = document.querySelector("#weather-forecast-container");
+let forecastHTML = `<div class="weather-forecast-item">`
+forecast.forEach(function(forecastDay, index){
+    if (index < 4) {
+      forecastHTML += 
+`<ul class="weather-forecast-list">
+    <li class="forecast-day">${formatDate(forecastDay.dt)}</li>
+    <li><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width = "50"></li>
+    <li class="forecast-temperature"><span class="forecast-temp-max">${Math.round(forecastDay.temp.max)}°</span><span class="forecast-temp-min">${Math.round(forecastDay.temp.min)}°</span></li>
+</ul>`  
+    }
+})
+
+
+forecastHTML += `</div>`
+forecastElement.innerHTML = forecastHTML;
+
+}
+
+function getForecast(coordinates) {
+    console.log(coordinates)
+    let apiKey = "6e6d2f7795d4a628640bafdb43dd9260";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
+
 }
 
 function displayCurrent(response) {
-    console.log(response)
 let city = document.querySelector("#primary-city");
 let temperature = document.querySelector("#primary-temperature");
 let iconElement = document.querySelector("#primary-weather-icon");
@@ -45,12 +86,11 @@ cloudiness.innerHTML = `${response.data.clouds.all} %`;
 humidity.innerHTML = `${response.data.main.humidity} %`;
 windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} m / s`;
 date.innerHTML = `Updated at ${transformedDate(response.data.dt)}`;
+
+getForecast(response.data.coord);
 }
 
-
-let apiKey = "6e6d2f7795d4a628640bafdb43dd9260";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayCurrent);
-
 let form = document.querySelector("#search-form");
-form.addEventListener("sunmit", handleSubmit);
+form.addEventListener("submit", handleSubmit);
+
+search("Kyiv");
