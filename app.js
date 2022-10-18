@@ -89,7 +89,7 @@ function getForecast(coordinates) {
 }
 
 function formatTemp(temp) {
-    return temp > 9 ? temp :`0${temp}`
+  return temp > 9 ? temp : `0${temp}`;
 }
 
 function displayCurrent(response) {
@@ -118,7 +118,25 @@ function displayCurrent(response) {
   getForecast(response.data.coord);
 }
 
+function getCity(respond) {
+  let city = respond.data.name;
+  search(city);
+}
+
+function showWeatherCurrent(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "6e6d2f7795d4a628640bafdb43dd9260";
+let apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(getCity);
+}
+
+function searchCurrent(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showWeatherCurrent);
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-search("Kyiv");
+window.onload = searchCurrent;
